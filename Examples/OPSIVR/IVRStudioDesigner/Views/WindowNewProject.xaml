@@ -1,0 +1,25 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ViewModel="clr-namespace:IVRStudio.ViewModel" mc:Ignorable="d" x:Class="IVRStudio.Views.WindowNewProject"
+        Title="Create a new IVR project" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Width="447" Height="155">
+    <Window.DataContext>
+        <ViewModel:VmNewProject/>
+    </Window.DataContext>
+    <Grid>
+
+        <DockPanel Margin="8,16,8,8" d:LayoutOverrides="Width">
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Please specify a name for your new IVR project." DockPanel.Dock="Top"/>
+
+            <DockPanel VerticalAlignment="Top" Margin="0,8,0,0" DockPanel.Dock="Top">
+                <TextBlock Height="17" TextWrapping="Wrap" Text="Project name:" VerticalAlignment="Center" DockPanel.Dock="Left"/>
+                <TextBox TextWrapping="Wrap" Text="{Binding IVRProject.Name, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Left" VerticalAlignment="Center" Margin="5,0,44,0"/>
+            </DockPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
+                <Button x:Name="btnOk" Content="Ok" Width="60" VerticalAlignment="Bottom" Height="28" Command="{Binding CommandOk, Mode=OneWay}" />
+                <Button x:Name="btnCancel" Content="Cancel" Width="60" VerticalAlignment="Bottom" Height="28" Margin="5,0,0,0" Command="{Binding CommandCancel, Mode=OneWay}" />
+            </StackPanel>
+        </DockPanel>
+
+    </Grid>
+</Window>

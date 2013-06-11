@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="IVRStudio.Views.UcTipView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" Background="White">
+    <DockPanel Margin="8">
+        <TextBlock Text="Quick tips how to build a menu system..." FontSize="18.667" VerticalAlignment="Top" FontWeight="Bold" DockPanel.Dock="Top"></TextBlock>
+        <DockPanel  VerticalAlignment="Top" Margin="0,20,0,0" DockPanel.Dock="Top">
+            <TextBlock Height="22" TextWrapping="Wrap" Text="1:" VerticalAlignment="Top" Width="37" FontWeight="Bold" FontSize="16"/>
+            <TextBlock TextWrapping="Wrap" Text="Select a desired menu element in the 'Menu Tools' panel then place it to the 'Menu Structure' panel by dragging&amp;dropping." VerticalAlignment="Center" FontSize="13.333"/>
+        </DockPanel>
+        <DockPanel Margin="0,5,0,0" VerticalAlignment="Top" DockPanel.Dock="Top">
+            <TextBlock Height="22" TextWrapping="Wrap" Text="2:" VerticalAlignment="Top" Width="37" FontWeight="Bold" FontSize="16"/>
+            <TextBlock TextWrapping="Wrap" Text="The selected menu item can be configured in the 'Menu Properties' section." VerticalAlignment="Center" FontSize="13.333"/>
+        </DockPanel>
+        <DockPanel VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0,5,0,0">
+            <TextBlock Height="22" TextWrapping="Wrap" Text="3:" VerticalAlignment="Top" Width="37" FontWeight="Bold" FontSize="16"/>
+            <TextBlock TextWrapping="Wrap" Text="Drag&amp;drop as many menu item as you need. That's it. Having done these steps, save your IVR menu system." VerticalAlignment="Center" FontSize="13.333"/>
+        </DockPanel>
+
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,393 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:OPS_IVR_Studio_ViewModel="clr-namespace:OPS_IVR_Studio.ViewModel"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:cmd="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WPF4"
+        xmlns:commonViewModel="clr-namespace:OPSIVRSystem.CommonViewModel;assembly=OPSIVRSystem"
+        xmlns:Converters="clr-namespace:OPS_IVR_Studio.Views.Converters"
+        x:Class="OPS_IVR_Studio.MainWindow"
+        
+        StateChanged="MainWindow_OnStateChanged"
+        Title="MainWindow"
+        Height="600"
+        Width="800"
+        MinWidth="620"
+        MinHeight="445"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True" ResizeMode="CanResizeWithGrip" ShowInTaskbar="True"
+        Icon="Style/ivr_system.ico">
+    <Window.Resources>
+        <Converters:ConverterInverseBoolean x:Key="ConverterInverseBoolean"/>
+        <DataTemplate DataType="{x:Type commonViewModel:VmIVRMenuElementBase}">
+            <Grid>
+                <DockPanel>
+                    <Image HorizontalAlignment="Left"
+                           Width="32"
+                           Height="32"
+                           VerticalAlignment="Stretch"
+                           Margin="3,0,0,0"
+                           Source="{Binding Icon, Mode=OneWay}" />
+                    <TextBlock TextWrapping="Wrap"
+                               Text="{Binding TouchToneKey}"
+                               VerticalAlignment="Center"
+                               Margin="8,0,0,0"
+                               FontSize="13.333"
+                               FontWeight="Bold" />
+                    <TextBlock TextWrapping="Wrap"
+                               Text="{Binding Name}"
+                               VerticalAlignment="Center"
+                               FontSize="13.333"
+                               Margin="8,0,0,0" />
+                </DockPanel>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Window.DataContext>
+        <OPS_IVR_Studio_ViewModel:VmMain />
+    </Window.DataContext>
+
+    <DockPanel VerticalAlignment="Stretch"
+               Background="#1c4027"
+               LastChildFill="True"
+               MinWidth="600"
+               MinHeight="400">
+        <Grid Margin="0"
+              DockPanel.Dock="Top"
+              x:Name="MainDockpanel">
+            <DockPanel>
+                <Grid DockPanel.Dock="Top"
+                      Height="32">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1"
+                                             StartPoint="0.5,0">
+                            <GradientStop Color="#FF235631"
+                                          Offset="0" />
+                            <GradientStop Color="#FF1B3825"
+                                          Offset="1" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <DockPanel LastChildFill="True"
+                               x:Name="DragableArea"
+                               MouseDown="DragableGridMouseDown"
+                               MouseMove="DragableGrid_OnMouseMove"
+                               DockPanel.Dock="Top">
+                        <DockPanel DockPanel.Dock="Left">
+                            <Button x:Name="WindowIcon"
+                                    RenderOptions.BitmapScalingMode="HighQuality"
+                                    Content=""
+                                    DockPanel.Dock="Left"
+                                    Height="20"
+                                    Margin="10,0,5,0"
+                                    Style="{DynamicResource WindowIcon}"
+                                    Click="WindowsIcon_Click">
+                                <Button.ContextMenu>
+                                    <ContextMenu x:Name="WindowIconMenu">
+                                        <MenuItem x:Name="RestoreWindowSize"
+                                                  Header="Restore"
+                                                  Click="RestoreWindowSize_Click">
+                                            <MenuItem.Icon>
+                                                <TextBlock Text="2"
+                                                           FontFamily="Webdings"
+                                                           Foreground="Gray" />
+                                            </MenuItem.Icon>
+                                        </MenuItem>
+                                        <MenuItem x:Name="MinimizedWindow"
+                                                  Header="Minimize"
+                                                  Click="MinimizeWindow_Click">
+                                            <MenuItem.Icon>
+                                                <TextBlock Text="0"
+                                                           FontFamily="Webdings"
+                                                           Foreground="Gray" />
+                                            </MenuItem.Icon>
+                                        </MenuItem>
+                                        <MenuItem x:Name="MaximizeWindow"
+                                                  Header="Maximize"
+                                                  Click="MaximizeWindow_Click">
+                                            <MenuItem.Icon>
+                                                <TextBlock Text="1"
+                                                           FontFamily="Webdings"
+                                                           Foreground="Gray" />
+                                            </MenuItem.Icon>
+                                        </MenuItem>
+                                        <Separator />
+                                        <MenuItem Header="Close   Alt+F4"
+                                                  x:Name="CloseWindow"
+                                                  Click="CloseWindow_Click">
+                                            <MenuItem.Icon>
+                                                <TextBlock Text="r"
+                                                           FontFamily="Webdings"
+                                                           Foreground="Gray"
+                                                           FontWeight="Bold" />
+                                            </MenuItem.Icon>
+                                        </MenuItem>
+                                    </ContextMenu>
+                                </Button.ContextMenu>
+                            </Button>
+                            <Image  Source="Style/ozeki_logo.png"
+                                    Height="16"
+                                    RenderOptions.BitmapScalingMode="HighQuality" />
+                            <Label Content="IVR Studio  -  "
+                                   VerticalContentAlignment="Center"
+                                   FontFamily="Arial"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="#bbc4bc"
+                                   DockPanel.Dock="Left" />
+                        </DockPanel>
+                        <TextBlock Text="{Binding LoadedProjectPath}"
+                                   Width="500"
+                                   FontFamily="Arial"
+                                   FontSize="14"
+                                   FontWeight="Normal"
+                                   Foreground="#bbc4bc"
+                                   VerticalAlignment="Center" />
+                        <TextBlock DockPanel.Dock="Left"
+                                   VerticalAlignment="Stretch" />
+                    </DockPanel>
+
+                    <DockPanel HorizontalAlignment="Right"
+                               VerticalAlignment="Center"
+                               DockPanel.Dock="Right"
+                               Margin="0,0,5,0">
+                        <TextBlock x:Name="MinimizeButton"
+                                   Text="0"
+                                   FontFamily="Webdings"
+                                   Foreground="Gray"
+                                   Margin="5,0,0,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Top"
+                                   MouseLeftButtonUp="MinimizeButtonMouseLeftButtonUp"
+                                   MouseEnter="MinimizeButton_OnMouseEnter"
+                                   MouseLeave="MinizeButton_MouseLeave" />
+                        <TextBlock x:Name="MaximizeButton"
+                                   Text="1"
+                                   FontFamily="Webdings"
+                                   Visibility="Collapsed"
+                                   Foreground="Gray"
+                                   Margin="5,0,0,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Top"
+                                   MouseLeftButtonUp="MaximizeButtonMouseLeftButtonUp"
+                                   MouseEnter="MaximizeButton_OnMouseEnter"
+                                   MouseLeave="MaximizeButton_MouseLeave" />
+                        <TextBlock x:Name="ChangeViewButton"
+                                   Text="2"
+                                   FontFamily="Webdings"
+                                   Foreground="Gray"
+                                   Margin="5,0,0,0"
+                                   VerticalAlignment="Top"
+                                   HorizontalAlignment="Right"
+                                   MouseLeftButtonUp="ChangeViewButtonMouseLeftButtonUp"
+                                   MouseEnter="ChangeViewButton_OnMouseEnter"
+                                   MouseLeave="ChangeViewButton_MouseLeave" />
+                        <TextBlock x:Name="CloseButton"
+                                   Text="r"
+                                   FontFamily="Webdings"
+                                   Foreground="Gray"
+                                   Margin="5,0,8,0"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Top"
+                                   MouseLeftButtonUp="CloseButtonMouseLeftButtonUp"
+                                   MouseEnter="CloseButton_OnMouseEnter"
+                                   MouseLeave="CloseButton_MouseLeave" />
+                    </DockPanel>
+                </Grid>
+            </DockPanel>
+        </Grid>
+        <DockPanel DockPanel.Dock="Top">
+            <Menu x:Name="UpperMenu"
+                  DockPanel.Dock="Top">
+                <Menu.Background>
+                    <LinearGradientBrush EndPoint="0.5,1"
+                                         StartPoint="0.5,0">
+                        <GradientStop Color="#FF1A2F21"
+                                      Offset="0" />
+                        <GradientStop Color="#FF20442A"
+                                      Offset="1" />
+                    </LinearGradientBrush>
+                </Menu.Background>
+
+                <MenuItem Header="_File"
+                          Foreground="White"
+                          Style="{StaticResource menutitles}"
+                          Margin="10,0,5,0">
+                    <MenuItem Header="_Open..."
+                              Style="{StaticResource submenutitles}"
+                              Command="{Binding CommandOpenIVRProject, Mode=OneWay}"/>
+                    <Separator />
+                    <MenuItem Header="_Start..."
+                              Style="{StaticResource submenutitles}"
+                              Command="{Binding CommandStart, Mode=OneWay}" />
+                    <MenuItem Header="_Stop..."
+                              Style="{StaticResource submenutitles}"
+                              Command="{Binding CommandStop, Mode=OneWay}"/>
+                    <Separator />
+                    <MenuItem Header="_Exit"
+                              Click="Exit_OnClick"
+                              Style="{StaticResource submenutitles}" />
+                </MenuItem>
+                <MenuItem Header="_Help"
+                          Foreground="White"
+                          Style="{StaticResource menutitles}">
+                    <MenuItem Header="_Visit to our Home Page"
+                              Command="{Binding HomePage}"
+                              Style="{StaticResource submenutitles}" />
+                    <MenuItem Header="_About"
+                              Command="{Binding About}"
+                              Style="{StaticResource submenutitles}" />
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <DockPanel DockPanel.Dock="Top"
+                   Background="#FF17913F"
+                   Height="47"
+                   LastChildFill="True">
+
+
+            <DockPanel>
+                <DockPanel.Background>
+                    <ImageBrush ImageSource="/OPS_IVR_Studio;component/Style/broadcast_menu_bg.png"/>
+                </DockPanel.Background>
+
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Left">
+
+                    <Button Content=""
+                            Height="47"
+                            Style="{DynamicResource open_icon}"
+                            Width="47"
+                            Command="{Binding CommandOpenIVRProject, Mode=OneWay}"
+                            CommandParameter="{Binding Items, ElementName=MenuTreeView}"  Margin="10,0,0,0"/>
+                    <Rectangle Height="30"
+                               Width="1"
+                               Fill="#3d6a3b" />
+                    <Rectangle Height="30"
+                               Width="1"
+                               Fill="#8fbd8f" />
+                    <Button Content=""
+                            Height="47"
+                            Style="{DynamicResource start_icon}"
+                            Width="47"
+                            Command="{Binding CommandStart, Mode=OneWay}"
+                            CommandParameter="{Binding Items, ElementName=MenuTreeView}" IsEnabled="{Binding IsRunning, Converter={StaticResource ConverterInverseBoolean}}" />
+                    <Rectangle Height="30"
+                               Width="1"
+                               Fill="#3d6a3b" />
+                    <Rectangle Height="30"
+                               Width="1"
+                               Fill="#8fbd8f" />
+                    <Button Content=""
+                            Height="47"
+                            Style="{DynamicResource stop_icon}"
+                            Width="47"
+                            Command="{Binding CommandStop, Mode=OneWay}"
+                            CommandParameter="{Binding Items, ElementName=MenuTreeView}" IsEnabled="{Binding IsRunning}" />
+                    <Rectangle Height="30"
+                               Width="1"
+                               Fill="#3d6a3b" />
+                    <Rectangle Height="30"
+                               Width="1"
+                               Fill="#8fbd8f" />
+                    <Label />
+                </StackPanel>
+            </DockPanel>
+            <DockPanel HorizontalAlignment="Right"
+                       Margin="0,0,15,0">
+                <Image Source="Style/ozeki_logo.png"
+                       Height="25"
+                       DockPanel.Dock="Left"
+                       VerticalAlignment="Center"
+                       RenderOptions.BitmapScalingMode="HighQuality" />
+                <Label Content="IVR Studio"
+                       DockPanel.Dock="Left"
+                       VerticalContentAlignment="Center"
+                       FontFamily="Arial"
+                       FontWeight="Normal"
+                       FontSize="20"
+                       Foreground="#1b3118" />
+            </DockPanel>
+
+        </DockPanel>
+        <DockPanel Margin="5,0,5,5"
+                   Background="#dceadd"
+                   x:Name="MainBackground">
+            <DockPanel Margin="10"
+                       HorizontalAlignment="Stretch"
+                       x:Name="MirrorPage">
+                <Grid x:Name="LeftSide">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <DockPanel x:Name="LogWindow"
+                               Background="#6da170"
+                               LastChildFill="True"
+                               HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               Grid.Column="0"
+                               Margin="0,0,5,0">
+                        <Label DockPanel.Dock="Top"
+                               Height="25"
+                               Content="Log Window"
+                               Style="{DynamicResource Headbg}"
+                               HorizontalAlignment="Stretch" />
+
+                        <TextBox DockPanel.Dock="Top"
+                                 TextWrapping="Wrap"
+                                 Text="{Binding LogText}" 
+                                 Margin="3,0,3,3" VerticalScrollBarVisibility="Auto"/>
+                    </DockPanel>
+
+                    <DockPanel Grid.Column="1" Margin="5,0,0,0">
+                        <Grid DockPanel.Dock="Top">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3*"
+                                               MinHeight="100" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="2*"
+                                               MinHeight="100" />
+                            </Grid.RowDefinitions>
+                            <DockPanel Grid.Row="2"
+                                       Background="#6da170">
+                                <Grid Margin="3"
+                                      Background="#dceadd">
+                                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" CanContentScroll="True">
+                                        <ContentPresenter Content="{Binding UcPropertiesPart}"
+                                                  Margin="3,3,3,3"/>
+                                    </ScrollViewer>
+                                </Grid>
+                            </DockPanel>
+
+                            <GridSplitter ResizeDirection="Rows"
+                                          Grid.Row="1"
+                                          Height="10"
+                                          Width="auto"
+                                          Background="#dceadd" 
+                                          HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Stretch"/>
+
+                            <DockPanel Background="#6da170">
+                                <Label DockPanel.Dock="Top" VerticalAlignment="Top"
+                                   Height="25"
+                                   Content="Menu Structure"
+                                   Style="{DynamicResource Headbg}" />
+                                <TreeView x:Name="MenuTreeView" VerticalAlignment="Stretch" Margin="1,0,1,1">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectedItemChanged">
+                                            <cmd:EventToCommand Command="{Binding CommandTreeViewItemChanged}"
+                                                            CommandParameter="{Binding SelectedItem, ElementName=MenuTreeView}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </TreeView>
+                            </DockPanel>
+
+                        </Grid>
+
+                    </DockPanel>
+                </Grid>
+            </DockPanel>
+        </DockPanel>
+    </DockPanel>
+
+</Window>

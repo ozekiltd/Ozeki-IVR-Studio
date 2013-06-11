@@ -1,0 +1,22 @@
+﻿<Application x:Class="OPS_IVR_Studio.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:taskbarNotification="clr-namespace:Hardcodet.Wpf.TaskbarNotification;assembly=Hardcodet.Wpf.TaskbarNotification">
+    
+    <Application.Resources>
+         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Style\Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="TextBlockPropertiesNameStyle" TargetType="{x:Type TextBlock}">
+                <Setter Property="TextWrapping" Value="NoWrap"/>
+                <Setter Property="TextTrimming" Value="None"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style x:Key="AppTaskbarIconStyle" TargetType="taskbarNotification:TaskbarIcon">
+                <Setter Property="IconSource" Value="Style\ivr_system.ico"/>
+                </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

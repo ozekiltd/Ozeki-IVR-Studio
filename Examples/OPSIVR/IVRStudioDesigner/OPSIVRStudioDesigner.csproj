@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3138C5AC-8AB4-4C5A-B6CF-6D5C1B5ADFCE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IVRStudio</RootNamespace>
+    <AssemblyName>IVRStudio</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20525.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight.Extras.WPF4, Version=4.0.23.37706, Culture=neutral, PublicKeyToken=1673db7d5906b0ad, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Common\OzCommon\Resources\GalaSoft.MvvmLight.Extras.WPF4.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.WPF4, Version=4.0.23.37706, Culture=neutral, PublicKeyToken=63eb5c012e0b3c1c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Common\OzCommon\Resources\GalaSoft.MvvmLight.WPF4.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\..\Common\OzCommon\Resources\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Common\OzCommon\Resources\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="GDragDrop\DefaultDragHandler.cs" />
+    <Compile Include="GDragDrop\DefaultDropHandler.cs" />
+    <Compile Include="GDragDrop\DragAdorner.cs" />
+    <Compile Include="GDragDrop\DragDrop.cs" />
+    <Compile Include="GDragDrop\DragInfo.cs" />
+    <Compile Include="GDragDrop\DropInfo.cs" />
+    <Compile Include="GDragDrop\DropTargetAdorner.cs" />
+    <Compile Include="GDragDrop\DropTargetAdorners.cs" />
+    <Compile Include="GDragDrop\DropTargetHighlightAdorner.cs" />
+    <Compile Include="GDragDrop\DropTargetInsertionAdorner.cs" />
+    <Compile Include="GDragDrop\IDragSource.cs" />
+    <Compile Include="GDragDrop\IDropTarget.cs" />
+    <Compile Include="GDragDrop\TreeAddOperationType.cs" />
+    <Compile Include="GDragDrop\TreeViewDropHandler.cs" />
+    <Compile Include="GDragDrop\Utilities\DataContainer.cs" />
+    <Compile Include="GDragDrop\Utilities\ItemsControlExtensions.cs" />
+    <Compile Include="GDragDrop\Utilities\TypeUtilities.cs" />
+    <Compile Include="GDragDrop\Utilities\VisualTreeExtensions.cs" />
+    <Compile Include="Model\IModel.cs" />
+    <Compile Include="Model\MockModel.cs" />
+    <Compile Include="Model\ModelBase.cs" />
+    <Compile Include="Model\RealModel.cs" />
+    <Compile Include="Util\DialogMessageEx.cs" />
+    <Compile Include="Util\FileOperationMessage.cs" />
+    <Compile Include="Util\MsgCommand.cs" />
+    <Compile Include="Util\MsgDestination.cs" />
+    <Compile Include="Util\NotificationMessageEx.cs" />
+    <Compile Include="ViewModel\VmIVRProject.cs" />
+    <Compile Include="ViewModel\VmMain.cs" />
+    <Compile Include="ViewModel\VmNewProject.cs" />
+    <Compile Include="ViewModel\VmProperties.cs" />
+    <Compile Include="Views\Converters\ConverterNarratorTypeToVisiblity.cs" />
+    <Compile Include="Views\UcCallTransferProperties.xaml.cs">
+      <DependentUpon>UcCallTransferProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UcFilePlaybackProperties.xaml.cs">
+      <DependentUpon>UcFilePlaybackProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UcMenuProperties.xaml.cs">
+      <DependentUpon>UcMenuProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UcTextToSpeechProperties.xaml.cs">
+      <DependentUpon>UcTextToSpeechProperties.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\UCTipView.xaml.cs">
+      <DependentUpon>UCTipView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UcVoiceMessageRecorderProperties.xaml.cs">
+      <DependentUpon>UcVoiceMessageRecorderProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WindowNewProject.xaml.cs">
+      <DependentUpon>WindowNewProject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WndPopup.xaml.cs">
+      <DependentUpon>WndPopup.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Resources\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UcCallTransferProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UcFilePlaybackProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UcMenuProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UcTextToSpeechProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UCTipView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UcVoiceMessageRecorderProperties.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WindowNewProject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WndPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\OPSIVRSystem\OPSIVRSystem.csproj">
+      <Project>{933bac58-064c-4351-a8e8-40cb241dbe92}</Project>
+      <Name>OPSIVRSystem</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MVVMLight.Nuget.Readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\fileplayback.png" />
+    <Resource Include="Resources\texttospeech.png" />
+    <Resource Include="Resources\transfer.png" />
+    <Resource Include="Resources\voicerecorder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\blank_document_icon.png" />
+    <Resource Include="Resources\broadcast_menu_bg.png" />
+    <Resource Include="Resources\broadcast_windows_corner_btn_close.png" />
+    <Resource Include="Resources\broadcast_windows_corner_btn_minimized.png" />
+    <Resource Include="Resources\broadcast_windows_corner_btn_normal.png" />
+    <Resource Include="Resources\menu_new.png" />
+    <Resource Include="Resources\open_icon.png" />
+    <Resource Include="Resources\ozeki_logo.png" />
+    <Resource Include="Resources\restart_icon.png" />
+    <Resource Include="Resources\save_icon.png" />
+    <Resource Include="Resources\start_icon.png" />
+    <Resource Include="Resources\stop_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ivr_system.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\buttonbg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SaveAs_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\open_audio_file_icon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

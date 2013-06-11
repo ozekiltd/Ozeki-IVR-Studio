@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="OPS_IVR_Studio.Views.UcCallTransferProperties"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <StackPanel Margin="0">
+            <TextBlock Text="The call will be transferred to another phone number if an appropriate DTMF response is received."
+                       TextWrapping="Wrap"
+                       Margin="0,10"/>
+            <DockPanel  >
+                <TextBlock TextWrapping="Wrap" Text="Touch tone key 1:" Width="120" Style="{DynamicResource TextBlockPropertiesNameStyle}" FontWeight="Bold" FontSize="13.333" VerticalAlignment="Center"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding CurrentIVRMenu.TransferDestinations[0].Destination}" VerticalAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Margin="0,8,0,0"  >
+                <TextBlock TextWrapping="Wrap" Text="Touch tone key 2:" Width="120" Style="{DynamicResource TextBlockPropertiesNameStyle}" FontWeight="Bold" FontSize="13.333" VerticalAlignment="Center" Margin="0"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding CurrentIVRMenu.TransferDestinations[1].Destination}" VerticalAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Margin="0,8,0,0"  >
+                <TextBlock TextWrapping="Wrap" Text="Touch tone key 3:" Width="120" Style="{DynamicResource TextBlockPropertiesNameStyle}" FontWeight="Bold" FontSize="13.333" VerticalAlignment="Center" Margin="0"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding CurrentIVRMenu.TransferDestinations[2].Destination}" VerticalAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Margin="0,8,0,0"  >
+                <TextBlock TextWrapping="Wrap" Text="Touch tone key 4:" Width="120" Style="{DynamicResource TextBlockPropertiesNameStyle}" FontWeight="Bold" FontSize="13.333" VerticalAlignment="Center" Margin="0"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding CurrentIVRMenu.TransferDestinations[3].Destination}" VerticalAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Margin="0,8,0,0"  >
+                <TextBlock TextWrapping="Wrap" Text="Touch tone key 5:" Width="120" Style="{DynamicResource TextBlockPropertiesNameStyle}" FontWeight="Bold" FontSize="13.333" VerticalAlignment="Center" Margin="0"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding CurrentIVRMenu.TransferDestinations[4].Destination}" VerticalAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Margin="0,8,0,0"  >
+                <TextBlock TextWrapping="Wrap" Text="Touch tone key 6:" Width="120" Style="{DynamicResource TextBlockPropertiesNameStyle}" FontWeight="Bold" FontSize="13.333" VerticalAlignment="Center" Margin="0"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding CurrentIVRMenu.TransferDestinations[5].Destination}" VerticalAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Margin="0,8,0,0"  >
+                <TextBlock TextWrapping="Wrap" Text="Touch tone key 7:" Width="120" Style="{DynamicResource TextBlockPropertiesNameStyle}" FontWeight="Bold" FontSize="13.333" VerticalAlignment="Center" Margin="0"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding CurrentIVRMenu.TransferDestinations[6].Destination}" VerticalAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Margin="0,8,0,0"  >
+                <TextBlock TextWrapping="Wrap" Text="Touch tone key 8:" Width="120" Style="{DynamicResource TextBlockPropertiesNameStyle}" FontWeight="Bold" FontSize="13.333" VerticalAlignment="Center" Margin="0"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding CurrentIVRMenu.TransferDestinations[7].Destination}" VerticalAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Margin="0,8,0,0"  >
+                <TextBlock TextWrapping="Wrap" Text="Touch tone key 9:" Width="120" Style="{DynamicResource TextBlockPropertiesNameStyle}" FontWeight="Bold" FontSize="13.333" VerticalAlignment="Center" Margin="0"/>
+                <TextBlock TextWrapping="Wrap" Text="{Binding CurrentIVRMenu.TransferDestinations[8].Destination}" VerticalAlignment="Center"/>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

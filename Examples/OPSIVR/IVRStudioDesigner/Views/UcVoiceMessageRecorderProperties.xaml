@@ -1,0 +1,32 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:Converters="clr-namespace:IVRStudio.Views.Converters" 
+	mc:Ignorable="d"
+	x:Class="IVRStudio.UcVoiceMessageRecorderProperties"
+	x:Name="UserControl"
+	d:DesignWidth="640" d:DesignHeight="480">
+
+    <UserControl.Resources>
+        <Converters:ConverterNarratorTypeToVisiblity x:Key="ConverterNarratorTypeToVisiblity"/>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <StackPanel VerticalAlignment="Top">
+            <DockPanel Visibility="{Binding CurrentIVRMenu.NarratorType, ConverterParameter=text, Converter={StaticResource ConverterNarratorTypeToVisiblity}}"  >
+                <TextBlock TextWrapping="Wrap" Text="Post introduction:" Width="120" Style="{DynamicResource TextBlockPropertiesNameStyle}" FontWeight="Bold" FontSize="13.333" VerticalAlignment="Center"/>
+                <TextBox TextWrapping="Wrap" Text="{Binding CurrentIVRMenu.PostIntroduction}" VerticalAlignment="Center"/>
+            </DockPanel>
+            <DockPanel Visibility="{Binding CurrentIVRMenu.NarratorType, ConverterParameter=audio, Converter={StaticResource ConverterNarratorTypeToVisiblity}}">
+                <TextBlock TextWrapping="Wrap" Text="Post introduction audio:" Width="120" Style="{DynamicResource TextBlockPropertiesNameStyle}" FontWeight="Bold" FontSize="13.333" VerticalAlignment="Center"/>
+                <DockPanel VerticalAlignment="Center">
+                    <Button Content="Button" Width="19" DockPanel.Dock="Right" Margin="0" Style="{DynamicResource OpenAudioBtnStyle}" Click="ButtonBase_OnClick"/>
+                    <TextBox TextWrapping="Wrap" Text="{Binding CurrentIVRMenu.PostIntroductionAudio}" VerticalAlignment="Center" Margin="0,0,7,0" IsReadOnly="True"/>
+                </DockPanel>
+            </DockPanel>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

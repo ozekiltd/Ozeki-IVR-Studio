@@ -1,0 +1,12 @@
+﻿<Window x:Class="IVRStudio.Views.WndPopup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WndPopup" ResizeMode="NoResize" HorizontalAlignment="Center" VerticalAlignment="Center" WindowStyle="None" Width="203" Height="70" ShowInTaskbar="False">
+    <Grid MouseLeave="Grid_MouseLeave_1">
+        <StackPanel Margin="3">
+            <Button x:Name="btnAddAsChild" Content="Add as a child element" Height="22" VerticalAlignment="Top" DockPanel.Dock="Top" Tag="1" Click="btnAddAsChild_Click"/>
+            <Button x:Name="btnReorder" Content="Move above to this element" DockPanel.Dock="Top" Click="btnReorder_Click"/>
+            <Button x:Name="btnCancelOp" Content="Cancel" DockPanel.Dock="Top" Tag="0" Click="btnCancelOp_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
